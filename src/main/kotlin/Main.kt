@@ -9,7 +9,7 @@ class Punto(var identificador: String) {
         this.x = x
         this.y = y
     }
-
+    //Devuelve una instancia de la clave
     fun obtenerCoordenadas() { val (x, y) = Pair(x, y) }
     override fun toString(): String {
         return "<$identificador> -> [<$x>,<$y>]"
@@ -17,12 +17,12 @@ class Punto(var identificador: String) {
     companion object {
 
         fun componenteDeVector(P1: Punto, P2: Punto) = Punto(P1.identificador+P2.identificador,P2.x-P1.x,P2.y-P1.y)
-
+        //Distancia entre 2 puntos
         fun distancia(Punto1: Punto, Punto2: Punto) {
             val diferencia: Double = sqrt(((Punto2.x - Punto1.x).toDouble()) * ((Punto2.x - Punto1.x).toDouble()) + (Punto2.y - Punto1.y) * (Punto2.y - Punto1.y))
             println(diferencia)
         }
-
+        //Clasifica según los puntos geométricos
         fun localizacionGeograficaNS(lista: Array<Punto>): Map<String, List<Punto>> {
             val norte = lista.filter { it.y >= 0  }
             val sur = lista.filter { it.y <0 }
@@ -35,7 +35,7 @@ class Punto(var identificador: String) {
 fun main() {
     val parametroA = Punto("ParametroA", 3, 2)
     val parametroB = Punto("ParametroB", 1, 3)
-    val parametroC = Punto.componenteDeVector(parametroA, parametroB)
+    val parametroC = Punto.componenteDeVector(parametroA, parametroB) //Devuelve un nuevo punto a partir de 2
     val parametroD = Punto("parametroD",4,1)
     val parametroE = Punto("parametroE",7,6)
     val parametroF = Punto("parametroF",-3,-1)
